@@ -84,7 +84,18 @@ HTML;
 						?>
 					</td>
 					<td style='text-align: right;'>
-						<?php echo ($data['do_not_use'] == 1) ? 'N/A' : $mileage . ' <em>km/l</em>'; ?>
+						<?php 
+						if($data['do_not_use'] == 1){
+							echo 'N/A' ; 
+						}
+						else{
+							$str2=<<<HTML
+								<em>km/l</em>
+HTML;
+							echo $mileage.str2;
+						}   
+					 
+						?>
 					</td>
 					<td style='text-align: right;'>
 						<?php echo $data['date']; ?>

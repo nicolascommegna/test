@@ -117,7 +117,10 @@
 						<div class='alert alert-error fade in'>
 HTML;
 						echo($str);
-						echo "<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>Oh Snap! </strong>";
+						$str2=<<<HTML
+							<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>Oh Snap! </strong>
+HTML;
+						echo $str2;
 						echo "The data you tried to enter already exist in the database.";
 						 $str1=<<<HTML
 							 !</div>\n
