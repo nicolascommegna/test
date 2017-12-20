@@ -296,7 +296,7 @@ class CI_Loader {
 				load_class('Model', 'core');
 			}
 
-			require_once($mod_path.'models/'.$path.$model.'.php');
+			require_once $mod_path.'models/'.$path.$model.'.php';
 
 			$model = ucfirst($model);
 
@@ -331,7 +331,7 @@ class CI_Loader {
 			return FALSE;
 		}
 
-		require_once(BASEPATH.'database/DB.php');
+		require_once BASEPATH.'database/DB.php';
 
 		if ($return === TRUE)
 		{
@@ -366,8 +366,8 @@ class CI_Loader {
 		// this use is deprecated and strongly discouraged
 		$CI->load->dbforge();
 
-		require_once(BASEPATH.'database/DB_utility.php');
-		require_once(BASEPATH.'database/drivers/'.$CI->db->dbdriver.'/'.$CI->db->dbdriver.'_utility.php');
+		require_once BASEPATH.'database/DB_utility.php';
+		require_once BASEPATH.'database/drivers/'.$CI->db->dbdriver.'/'.$CI->db->dbdriver.'_utility.php';
 		$class = 'CI_DB_'.$CI->db->dbdriver.'_utility';
 
 		$CI->dbutil = new $class();
@@ -389,8 +389,8 @@ class CI_Loader {
 
 		$CI =& get_instance();
 
-		require_once(BASEPATH.'database/DB_forge.php');
-		require_once(BASEPATH.'database/drivers/'.$CI->db->dbdriver.'/'.$CI->db->dbdriver.'_forge.php');
+		require_once BASEPATH.'database/DB_forge.php';
+		require_once BASEPATH.'database/drivers/'.$CI->db->dbdriver.'/'.$CI->db->dbdriver.'_forge.php';
 		$class = 'CI_DB_'.$CI->db->dbdriver.'_forge';
 
 		$CI->dbforge = new $class();
@@ -511,8 +511,8 @@ class CI_Loader {
 					show_error('Unable to load the requested file: helpers/'.$helper.'.php');
 				}
 
-				include_once($ext_helper);
-				include_once($base_helper);
+				include_once $ext_helper;
+				include_once $base_helper;
 
 				$this->_ci_helpers[$helper] = TRUE;
 				log_message('debug', 'Helper loaded: '.$helper);
@@ -524,7 +524,7 @@ class CI_Loader {
 			{
 				if (file_exists($path.'helpers/'.$helper.'.php'))
 				{
-					include_once($path.'helpers/'.$helper.'.php');
+					include_once $path.'helpers/'.$helper.'.php';
 
 					$this->_ci_helpers[$helper] = TRUE;
 					log_message('debug', 'Helper loaded: '.$helper);
@@ -690,11 +690,11 @@ class CI_Loader {
 
 		if ($path == '')
 		{
-			$void = array_shift($this->_ci_library_paths);
+			/*$void = array_shift($this->_ci_library_paths);
 			$void = array_shift($this->_ci_model_paths);
 			$void = array_shift($this->_ci_helper_paths);
 			$void = array_shift($this->_ci_view_paths);
-			$void = array_shift($config->_config_paths);
+			$void = array_shift($config->_config_paths);*/
 		}
 		else
 		{
@@ -830,7 +830,7 @@ class CI_Loader {
 		}
 		else
 		{
-			include($_ci_path); // include() vs include_once() allows for multiple views with the same name
+			include $_ci_path; // include() vs include_once() allows for multiple views with the same name
 		}
 
 		log_message('debug', 'File loaded: '.$_ci_path);
@@ -931,8 +931,8 @@ class CI_Loader {
 					return;
 				}
 
-				include_once($baseclass);
-				include_once($subclass);
+				include_once $baseclass;
+				include_once $subclass;
 				$this->_ci_loaded_files[] = $subclass;
 
 				return $this->_ci_init_class($class, config_item('subclass_prefix'), $params, $object_name);
@@ -970,7 +970,7 @@ class CI_Loader {
 					return;
 				}
 
-				include_once($filepath);
+				include_once $filepath;
 				$this->_ci_loaded_files[] = $filepath;
 				return $this->_ci_init_class($class, '', $params, $object_name);
 			}
@@ -1023,22 +1023,22 @@ class CI_Loader {
 					// first, global next
 					if (defined('ENVIRONMENT') AND file_exists($path .'config/'.ENVIRONMENT.'/'.strtolower($class).'.php'))
 					{
-						include($path .'config/'.ENVIRONMENT.'/'.strtolower($class).'.php');
+						include $path .'config/'.ENVIRONMENT.'/'.strtolower($class).'.php';
 						break;
 					}
 					elseif (defined('ENVIRONMENT') AND file_exists($path .'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php'))
 					{
-						include($path .'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php');
+						include $path .'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php';
 						break;
 					}
 					elseif (file_exists($path .'config/'.strtolower($class).'.php'))
 					{
-						include($path .'config/'.strtolower($class).'.php');
+						include $path .'config/'.strtolower($class).'.php';
 						break;
 					}
 					elseif (file_exists($path .'config/'.ucfirst(strtolower($class)).'.php'))
 					{
-						include($path .'config/'.ucfirst(strtolower($class)).'.php');
+						include $path .'config/'.ucfirst(strtolower($class)).'.php';
 						break;
 					}
 				}
@@ -1115,11 +1115,11 @@ class CI_Loader {
 	{
 		if (defined('ENVIRONMENT') AND file_exists(APPPATH.'config/'.ENVIRONMENT.'/autoload.php'))
 		{
-			include(APPPATH.'config/'.ENVIRONMENT.'/autoload.php');
+			include APPPATH.'config/'.ENVIRONMENT.'/autoload.php';
 		}
 		else
 		{
-			include(APPPATH.'config/autoload.php');
+			include APPPATH.'config/autoload.php';
 		}
 
 		if ( ! isset($autoload))

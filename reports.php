@@ -411,7 +411,7 @@ HTML;
 					{
 							$refueling['vehicle'] = $this->sharedDB_model->get('vehicles', array('id', 'name', 'vehicle_number', 'fuel_capacity'), array('id' => $refueling['vehicle']));
 							$refueling['vehicle'] = $refueling['vehicle'][0];
-							$refuelingDate = explode('-', $refueling['date']);
+							//$refuelingDate = explode('-', $refueling['date']);
 							$refueling['date_exact'] = $refueling['date'];
 							$refueling['date'] = date('D, j M, Y', $refueling['date']);
 							$refueling['date_nepali'] = $this->dateconverter->eng_to_nep(date('Y', $refueling['date_exact']), date('m', $refueling['date_exact']), date('j', $refueling['date_exact']));
