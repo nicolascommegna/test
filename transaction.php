@@ -39,7 +39,7 @@
 			public function autocomplete_customer()
 			{
 					$searchTerm = $this->input->get('term');
-					$findings = $this->transaction_model->autocomplete_customer($searchTerm);
+					$findings = $this->transaction_model->autocomplete_customer_t($searchTerm);
 					$allFindings = array();
 					//foreach ($findings as $finding) $allFindings[] = $finding['name'] . ' (' . $finding['reg_number'] . ', ' . $finding['alternate_id'] . ', ' . $finding['type'] . ' )';
 					foreach ($findings as $finding) $allFindings[] = $finding['name'];
@@ -49,7 +49,7 @@
 			public function autocomplete_inventory()
 			{
 					$searchTerm = $this->input->get('term');
-					$findings = $this->transaction_model->autocomplete_inventory($searchTerm);
+					$findings = $this->transaction_model->autocomplete_inventory_t($searchTerm);
 					$allFindings = array();
 					//foreach ($findings as $finding) $allFindings[] = $finding['name'] . ' ( ' . $finding['code'] . ' )';
 					foreach ($findings as $finding)
@@ -67,7 +67,7 @@
 			{
 					// The only difference to the method above is that for this one, the quantity isn't taken into consideration. I mean, even the inventory which has 0 stock is shown here.
 					$searchTerm = $this->input->get('term');
-					$findings = $this->transaction_model->autocomplete_inventory($searchTerm);
+					$findings = $this->transaction_model->autocomplete_inventory_t($searchTerm);
 					$allFindings = array();
 					//foreach ($findings as $finding) $allFindings[] = $finding['name'] . ' ( ' . $finding['code'] . ' )';
 					foreach ($findings as $finding)
@@ -87,7 +87,7 @@
 					
 					$this->load->model('inventory_model');
 					
-					$details = $this->inventory_model->get_inventory(array('inventory.id', 'inventory.name'), array('inventory.name' => $name), NULL,  'inventory.added_on desc');
+					$details = $this->inventory_model->get_inventory_i(array('inventory.id', 'inventory.name'), array('inventory.name' => $name), NULL,  'inventory.added_on desc');
 					$details = $details[0];
 					$customerType = $this->sharedDB_model->get('customers', array('type'), array('name' => $customer));
 					$customerType = $customerType[0]['type'];
