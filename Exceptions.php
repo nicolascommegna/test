@@ -132,7 +132,7 @@ class CI_Exceptions {
 	 * @param 	int		the status code
 	 * @return	string
 	 */
-	function show_error($heading, $message, $template = 'error_general', $status_code = 500)
+	function show_error_exception($heading, $message, $template = 'error_general', $status_code = 500)
 	{
 		set_status_header($status_code);
 
@@ -144,7 +144,7 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include(APPPATH.'errors/'.$template.'.php');
+		include APPPATH.'errors/'.$template.'.php';
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		return $buffer;
@@ -180,7 +180,7 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include(APPPATH.'errors/error_php.php');
+		include APPPATH.'errors/error_php.php';
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		echo $buffer;

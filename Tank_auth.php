@@ -272,7 +272,7 @@ class Tank_auth
 
 			} elseif ($this->ci->users->is_email_available($email)) {
 				$data['new_email_key'] = md5(rand().microtime());
-				$this->ci->users->set_new_email($user_id, $email, $data['new_email_key'], FALSE);
+				$this->ci->users->set_new_email_users($user_id, $email, $data['new_email_key'], FALSE);
 				return $data;
 
 			} else {
@@ -340,7 +340,7 @@ class Tank_auth
 	function can_reset_password($user_id, $new_pass_key)
 	{
 		if ((strlen($user_id) > 0) AND (strlen($new_pass_key) > 0)) {
-			return $this->ci->users->can_reset_password(
+			return $this->ci->users->can_reset_password_users(
 				$user_id,
 				$new_pass_key,
 				$this->ci->config->item('forgot_password_expire', 'tank_auth'));
