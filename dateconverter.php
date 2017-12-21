@@ -7,7 +7,7 @@
 			
 		}
 		
-		private $bs = array(
+		const bs = array(
 			0=>array(2000,30,32,31,32,31,30,30,30,29,30,29,31),
 			1=>array(2001,31,31,32,31,31,31,30,29,30,29,30,30),
 			2=>array(2002,31,31,32,32,31,30,30,29,30,29,30,30),
@@ -391,7 +391,7 @@
 		
 		
 		/**
-		 * currently can only calculate the date between BS 2000-2089
+		 * currently can only calculate the date between bs 2000-2089
 		 *
 		 * @param unknown_type $yy
 		 * @param unknown_type $mm
